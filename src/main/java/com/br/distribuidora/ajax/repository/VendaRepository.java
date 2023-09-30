@@ -1,13 +1,14 @@
 package com.br.distribuidora.ajax.repository;
 
-import com.br.distribuidora.ajax.entity.Usuario;
+import com.br.distribuidora.ajax.entity.Venda;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
+import java.util.List;
 
+@Repository
+public interface VendaRepository extends JpaRepository<Venda, Long> {
     @Query(value = "select " +
             "    a.* " +
             "    from " +
@@ -18,6 +19,5 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
             "    d.id = ma.disciplina_id " +
             "            where " +
             "    d.id = ?1", nativeQuery = true)
-
-    public Usuario login(String email, String senha);
+    public List<Venda> listaVendaUsuario(Long idUsuario);
 }

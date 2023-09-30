@@ -1,12 +1,15 @@
 package com.br.distribuidora.ajax.repository;
 
-import com.br.distribuidora.ajax.entity.Usuario;
+import com.br.distribuidora.ajax.entity.Produto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
-public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
+public interface ProdutoRepository extends JpaRepository<Produto, Long> {
+    List<Produto> findByNomeContainsIgnoreCase(String nome);
 
     @Query(value = "select " +
             "    a.* " +
@@ -18,6 +21,5 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
             "    d.id = ma.disciplina_id " +
             "            where " +
             "    d.id = ?1", nativeQuery = true)
-
-    public Usuario login(String email, String senha);
+    public List<Produto> listaProdutoTipo(Long idTipo);
 }
