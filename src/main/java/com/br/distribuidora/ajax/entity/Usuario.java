@@ -18,6 +18,7 @@ import java.util.Set;
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    @jakarta.persistence.Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,6 +29,14 @@ public class Usuario implements Serializable {
 
     private Date data_nascimento;
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
     public enum AlunoStatus {
         ATIVO,
         CANCELADO
@@ -35,7 +44,7 @@ public class Usuario implements Serializable {
     private AlunoStatus status;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<Endereco> emails;
+    private Set<Endereco> enderecos;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<DadosCartoes> dadosCartoes;

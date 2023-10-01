@@ -12,14 +12,12 @@ public interface ProdutoRepository extends JpaRepository<Produto, Long> {
     List<Produto> findByNomeContainsIgnoreCase(String nome);
 
     @Query(value = "select " +
-            "    a.* " +
+            "    * " +
             "    from " +
-            "    aluno_online_2023_2.aluno a " +
-            "    inner join matricula_aluno ma on " +
-            "    ma.id = a.id " +
-            "    inner join disciplina d on " +
-            "    d.id = ma.disciplina_id " +
+            "    produto " +
+            "    left join tipo_produto on " +
+            "    tipo_produto.id = produto.tipo_produto " +
             "            where " +
-            "    d.id = ?1", nativeQuery = true)
+            "    produto.tipo_produto = ?1", nativeQuery = true)
     public List<Produto> listaProdutoTipo(Long idTipo);
 }

@@ -16,6 +16,7 @@ import java.util.Set;
 @Setter
 @Entity
 public class Venda implements Serializable {
+    @jakarta.persistence.Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -39,6 +40,11 @@ public class Venda implements Serializable {
     private Double valorTotal;
 
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-
+    public Long getId() {
+        return id;
+    }
 }
