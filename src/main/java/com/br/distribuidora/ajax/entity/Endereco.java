@@ -1,8 +1,6 @@
 package com.br.distribuidora.ajax.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,6 +14,7 @@ import java.io.Serializable;
 @Entity
 public class Endereco implements Serializable {
 
+    @jakarta.persistence.Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,4 +25,15 @@ public class Endereco implements Serializable {
     private String estado;
     private String complemento;
 
+    @ManyToOne
+    @JoinColumn(name="usuario_id")
+    private Usuario usuario;
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
 }

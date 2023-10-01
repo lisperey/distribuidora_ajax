@@ -1,5 +1,6 @@
 package com.br.distribuidora.ajax.controller;
 
+import com.br.distribuidora.ajax.dto.CadastroUsuario;
 import com.br.distribuidora.ajax.entity.Usuario;
 import com.br.distribuidora.ajax.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +32,8 @@ public class UsuarioController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Usuario> create(@RequestBody Usuario usuario) {
-        Usuario usuarioCreated = service.create(usuario);
+    public ResponseEntity<CadastroUsuario> create(@RequestBody Usuario usuario) {
+        CadastroUsuario usuarioCreated = service.createUsuario(usuario);
         return ResponseEntity.status(201).body(usuarioCreated);
     }
 

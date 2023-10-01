@@ -17,6 +17,7 @@ import java.io.Serializable;
 @Setter
 @Entity
 public class FormaEntrega implements Serializable {
+    @jakarta.persistence.Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,4 +25,12 @@ public class FormaEntrega implements Serializable {
     private String formaEntrega;
 
     private Double valor;
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
+    }
 }

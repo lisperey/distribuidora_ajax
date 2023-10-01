@@ -1,8 +1,7 @@
 
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: mysql://root:dakck04gtnL3Q6aO173H@containers-us-west-101.railway.app:8003/railway
+    url: jdbc:mysql://root:dakck04gtnL3Q6aO173H@containers-us-west-101.railway.app:8003/railway
     username: root
     password: dakck04gtnL3Q6aO173H
   jpa:

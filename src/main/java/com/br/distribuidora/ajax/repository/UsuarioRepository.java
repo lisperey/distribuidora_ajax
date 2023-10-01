@@ -9,15 +9,12 @@ import org.springframework.stereotype.Repository;
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
     @Query(value = "select " +
-            "    a.* " +
+            "    * " +
             "    from " +
-            "    aluno_online_2023_2.aluno a " +
-            "    inner join matricula_aluno ma on " +
-            "    ma.id = a.id " +
-            "    inner join disciplina d on " +
-            "    d.id = ma.disciplina_id " +
+            "    usuario " +
             "            where " +
-            "    d.id = ?1", nativeQuery = true)
+            "    usuario.email = ?1" +
+            "AND usuario.senha = ?2", nativeQuery = true)
 
     public Usuario login(String email, String senha);
 }
