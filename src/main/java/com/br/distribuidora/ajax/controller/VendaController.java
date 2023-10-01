@@ -1,5 +1,6 @@
 package com.br.distribuidora.ajax.controller;
 
+import com.br.distribuidora.ajax.dto.CadastroVenda;
 import com.br.distribuidora.ajax.entity.Venda;
 import com.br.distribuidora.ajax.service.VendaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,8 @@ public class VendaController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Venda> create(@RequestBody Venda venda) {
-        Venda vendaCreated = service.create(venda);
+    public ResponseEntity<CadastroVenda> create(@RequestBody Venda venda) {
+        CadastroVenda vendaCreated = service.createVenda(venda);
         return ResponseEntity.status(201).body(vendaCreated);
     }
 
